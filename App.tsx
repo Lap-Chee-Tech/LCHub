@@ -1,25 +1,24 @@
-import React from 'react';
-import { AppLoading } from 'expo';
-import { Container, Text } from 'native-base';
-import * as Font from 'expo-font';
-import { Ionicons } from '@expo/vector-icons';
-import { Platform, StatusBar } from 'react-native';
+import React from "react";
+import { AppLoading } from "expo";
+import { Container, Text } from "native-base";
+import * as Font from "expo-font";
+import { Ionicons } from "@expo/vector-icons";
+import { Platform, StatusBar } from "react-native";
+import { Home } from "./app/views";
 
-
-export default class App extends React.Component<{}, {isReady: boolean}> {
-
-  constructor(props:any){
-    props=super(props);
+export default class App extends React.Component<{}, { isReady: boolean }> {
+  constructor(props: any) {
+    props = super(props);
     this.state = {
       isReady: false
-    }
+    };
   }
 
   async componentDidMount() {
     await Font.loadAsync({
-      Roboto: require('native-base/Fonts/Roboto.ttf'),
-      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
-      ...Ionicons.font,
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      ...Ionicons.font
     });
     this.setState({ isReady: true });
   }
@@ -30,17 +29,16 @@ export default class App extends React.Component<{}, {isReady: boolean}> {
     }
 
     return (
-      <Container style = {{
-        ...Platform.select({
-          ios: {},
-          android:{paddingTop: StatusBar.currentHeight, paddingLeft: 16}
-      })
-    }}
+      <Container
+        style={{
+          ...Platform.select({
+            ios: {},
+            android: { paddingTop: StatusBar.currentHeight }
+          })
+        }}
       >
-        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus perspiciatis sed adipisci, nesciunt explicabo non omnis, blanditiis numquam dolor a dicta illo reprehenderit hic, ab qui fugit nobis necessitatibus optio!</Text>
+        <Home />
       </Container>
     );
   }
 }
-
-
