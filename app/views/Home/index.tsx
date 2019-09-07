@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Header, View } from "native-base";
 import { Switch, Link } from "react-router-dom";
 
-import { AppHeader, EventCard } from "../../components";
+import { AppHeader, EventBar } from "../../components";
 
 export class Home extends Component<{}, { events: Array<string> }> {
   constructor(props: any) {
@@ -18,9 +18,7 @@ export class Home extends Component<{}, { events: Array<string> }> {
     return (
       <Container>
         <AppHeader />
-        {this.state.events.map(event => {
-          return <EventCard key={Math.random()} event={event} />;
-        })}
+        <EventBar />
       </Container>
     );
   }

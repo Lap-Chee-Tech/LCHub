@@ -3,22 +3,25 @@ import {
   Container,
   Header,
   Left,
+  Right,
   Body,
   Button,
   Icon,
   Title
 } from "native-base";
 
+import { EventBar } from "./EventBar";
+
 export const AppHeader = () => {
   return (
-    <Header style={{ backgroundColor: "#fff" }}>
-      <Left>
+    <Header>
+      <Left style={{ flex: 0.75 }}>
         <Button transparent>
-          <Icon name="arrow-back" style={{ color: "#000" }} />
+          <Icon name="arrow-back" style={{ color: "#fff" }} />
         </Button>
       </Left>
-      <Body>
-        <Title style={{ color: "#000" }}>LCHub</Title>
+      <Body style={{ flex: 1 }}>
+        <Title>LCHub</Title>
       </Body>
     </Header>
   );
