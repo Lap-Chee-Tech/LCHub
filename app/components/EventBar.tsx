@@ -1,15 +1,5 @@
-import React, { Component } from "react";
-import {
-  Container,
-  Header,
-  Tab,
-  Tabs,
-  TabHeading,
-  Icon,
-  Text,
-  Content
-} from "native-base";
-import { View } from "react-native";
+import React from "react";
+import { Tab, Tabs, TabHeading, Text } from "native-base";
 import { EventCard } from "./EventCard";
 
 export const EventBar = () => {
@@ -22,7 +12,7 @@ export const EventBar = () => {
           </TabHeading>
         }
       >
-        <EventCard event="Upcoming Event" />
+        <EventCard id="63NiQWJ9jcpKuyD255rX" />
       </Tab>
       <Tab
         heading={
@@ -31,7 +21,7 @@ export const EventBar = () => {
           </TabHeading>
         }
       >
-        <EventCard event="Registered Event" />
+        <EventCard id="63NiQWJ9jcpKuyD255rX" />
       </Tab>
     </Tabs>
   );

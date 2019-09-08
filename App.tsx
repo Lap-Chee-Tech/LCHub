@@ -1,12 +1,13 @@
 import React from "react";
 import { AppLoading } from "expo";
-import { Container, Text, StyleProvider } from "native-base";
+import { Container, StyleProvider } from "native-base";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import { Platform, StatusBar } from "react-native";
-import { Home } from "./app/views";
 import getTheme from "./native-base-theme/components";
 import material from "./native-base-theme/variables/material";
+
+import { AppHeader, EventBar } from "./app/components";
 
 export default class App extends React.Component<{}, { isReady: boolean }> {
   constructor(props: any) {
@@ -40,7 +41,8 @@ export default class App extends React.Component<{}, { isReady: boolean }> {
             })
           }}
         >
-          <Home />
+          <AppHeader />
+          <EventBar />
         </Container>
       </StyleProvider>
     );
