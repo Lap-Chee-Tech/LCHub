@@ -1,4 +1,9 @@
-node_modules/**/*
+#dependencies
+server/node_modules
+mobile/node_modules
+admin/node_modules
+
+#others
 .expo/*
 npm-debug.*
 *.jks
@@ -9,3 +14,4 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
+.vscode
