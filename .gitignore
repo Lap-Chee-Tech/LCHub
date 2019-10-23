@@ -2,6 +2,7 @@
 server/node_modules
 mobile/node_modules
 admin/node_modules
+server/.env
 
 #others
 .expo/*
