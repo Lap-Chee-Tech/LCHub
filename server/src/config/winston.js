@@ -34,9 +34,9 @@ const logger = winston.createLogger({
             colorize: 'all',
             silent: process.env.NODE_ENV === 'test' // - Disable logging during testing 
         }), 
-        new winston.transports.File({ filename: path.join(logDir, 'combined.log')}),
-        new winston.transports.File({ filename: path.join(logDir, 'error.log'), level: 'error' }), 
-        new winston.transports.File({ filename: path.join(logDir, 'error.log'), level: 'warn' })
+        new winston.transports.File({ filename: path.join(logDir, 'combined.log'), format: combine(timestamp(), loggerFormatFile)}),
+        new winston.transports.File({ filename: path.join(logDir, 'error.log'), level: 'error', format: combine(timestamp(), loggerFormatFile)}), 
+        new winston.transports.File({ filename: path.join(logDir, 'error.log'), level: 'warn', format: combine(timestamp(), loggerFormatFile)})
     ]
 });
 
