@@ -8,5 +8,5 @@ const userSchema = new Schema({
     uid: { type: Number, default: 0 }
 });
 
-const UserSchema = mongoose.model('user', userSchema);
-module.export = UserSchema;
+const User = mongoose.model('user', userSchema);
+module.exports = User;
