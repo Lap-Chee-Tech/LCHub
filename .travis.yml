@@ -1,0 +1,8 @@
+sudo: false 
+# Navigate to the server folder
+before_install: cd server 
+
+language: node_js
+
+node_js: 
+  - "stable"
