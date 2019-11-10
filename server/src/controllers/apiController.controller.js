@@ -1,9 +1,7 @@
-// API Controller - ORM operations 
 import mongoose from 'mongoose';
 import logger from './../config/winston';
 import User from './../models/userModel';
 
-// Find user by uid
 export const getUser = function(req, res) {
     let uid = req.params.uid; 
     User.find({
@@ -21,7 +19,6 @@ export const getUser = function(req, res) {
     });
 }
 
-// Adds a new user to the database
 export const addUser = function(req, res) {
     let name = req.params.name; 
     let uid = req.params.uid; 
@@ -32,13 +29,11 @@ export const addUser = function(req, res) {
             throw new Error(err);
         } 
         if (docs.length === 0) {
-            // Create a new user
             const user = new User({
                 name: name, 
                 room_no: 1000, 
                 uid: uid
             });
-            // Save the user to the database
             user.save()
                 .then(() => res.status(200).send('User added!'))
                 .catch(err => res.status(404).send(err))

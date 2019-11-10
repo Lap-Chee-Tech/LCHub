@@ -8,7 +8,6 @@ const router = Router();
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
 router.get('/', (req, res) => {
-    // Performance test 
     res.status(200).json({ message: 'hey!' });
 });
 
