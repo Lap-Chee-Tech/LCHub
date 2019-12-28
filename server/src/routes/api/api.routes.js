@@ -12,6 +12,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/find/:uid', getUser);
-router.get('/add/:name/:uid', addUser);
+router.post('/add/', urlEncodedParser, addUser);
 
 export default router;
