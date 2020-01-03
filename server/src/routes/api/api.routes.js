@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import  { getUser, addUser }  from './../../controllers/apiController.controller' 
+import  { getUser, addUser, authenticate, generateToken, respondToken}  from './../../controllers/apiController.controller' 
 import bodyParser from 'body-parser';
 import { add } from 'winston';
 
@@ -13,5 +13,6 @@ router.get('/', (req, res) => {
 
 router.get('/find/:uid', getUser);
 router.post('/add/', urlEncodedParser, addUser);
+router.post('/auth/', urlEncodedParser, authenticate, generateToken, respondToken);
 
 export default router;
