@@ -1,8 +1,7 @@
-import mongoose from 'mongoose';
 import logger from './../config/winston';
 import User from './../models/userModel';
 
-export const getUser = function(req, res) {
+export const getUser = function(req, res, next) {
     let uid = req.params.uid; 
     User.find({
         uid: uid
@@ -20,25 +19,26 @@ export const getUser = function(req, res) {
 }
 
 export const addUser = function(req, res) {
-    let name = req.params.name; 
-    let uid = req.params.uid; 
-    User.find({
-        uid: uid
-    }, function(err, docs) {
-        if (err) {
-            throw new Error(err);
-        } 
-        if (docs.length === 0) {
-            const user = new User({
-                name: name, 
-                room_no: 1000, 
-                uid: uid
+    User.findOne({
+        username: req.body.username
+    })
+    .exec()
+    .then((user) => {
+        if (user) {
+            return res.status(404).send({
+                status: 404, 
+                message: 'User exists!'
             });
-            user.save()
-                .then(() => res.status(200).send('User added!'))
-                .catch(err => res.status(404).send(err))
         } else {
-            res.status(404).send('User already exists!')
+            User.create({
+                username: req.body.username, 
+                password: req.body.password
+            })
+            .then((savedUser) => {
+                return res.status(200).send(savedUser);
+            })
+            .catch(err => res.status(404).send({ status: 404, message: err }));
         }
-    });
+    })
+    .catch(err => res.status(404).send({ status: 404, message: err }))
 } 
